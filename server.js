@@ -1,7 +1,7 @@
-import express from "express";
-import bodyParser from "body-parser";
-import fs from "fs-extra";
-import { Rcon } from "rcon-client";
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs-extra");
+const { Rcon } = require("rcon-client");
 
 const app = express();
 const DB_PATH = "./data/database.json";
@@ -9,7 +9,6 @@ const DB_PATH = "./data/database.json";
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// === Fungsi Helper ===
 async function loadDB() {
   try {
     return JSON.parse(await fs.readFile(DB_PATH, "utf8"));
@@ -22,7 +21,7 @@ async function saveDB(data) {
   await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2));
 }
 
-// === REGISTER ===
+// REGISTER
 app.post("/api/register", async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)
@@ -38,19 +37,16 @@ app.post("/api/register", async (req, res) => {
   res.json({ success: true });
 });
 
-// === LOGIN ===
+// LOGIN
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
   const db = await loadDB();
   const user = db.users.find(u => u.username === username && u.password === password);
-
-  if (!user)
-    return res.status(401).json({ error: "Username atau password salah." });
-
+  if (!user) return res.status(401).json({ error: "Username atau password salah." });
   res.json({ success: true, user });
 });
 
-// === STATUS USER ===
+// STATUS
 app.post("/api/status", async (req, res) => {
   const { username } = req.body;
   const db = await loadDB();
@@ -59,7 +55,7 @@ app.post("/api/status", async (req, res) => {
   res.json({ claimed: user.claimed });
 });
 
-// === KLAIM HADIAH ===
+// CLAIM
 app.post("/api/claim", async (req, res) => {
   const { username } = req.body;
   const db = await loadDB();
@@ -70,8 +66,8 @@ app.post("/api/claim", async (req, res) => {
 
   try {
     const rcon = await Rcon.connect({
-      host: "localhost",   // ganti IP server Minecraft kamu
-      port: 25575,         // sesuaikan port RCON
+      host: "localhost",
+      port: 25575,
       password: "yourRCONpassword"
     });
 
