@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import { Rcon } from "rcon-client";
 
 const app = express();
-const DB_PATH = "./database.json";
+const DB_PATH = "./data/database.json";
 
 app.use(bodyParser.json());
 app.use(express.static("public"));
