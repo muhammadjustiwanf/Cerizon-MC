@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Akun Cerizon</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('minecraft-background.mp4') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+    .box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 16px;
+      width: 350px;
+      margin: 120px auto;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 25px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(45deg, #00ffff, #00aaff);
+      cursor: pointer;
+      color: black;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Daftar Akun Cerizon</h2>
+    <p><small>Username harus sesuai dengan nickname Minecraft kamu agar hadiah terkirim dengan benar.</small></p>
+    <form id="registerForm">
+      <input type="text" id="username" placeholder="Username Minecraft" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit">Daftar</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+      if (data.error) return alert(data.error);
+
+      alert('Akun berhasil dibuat!');
+      localStorage.setItem('cerizonUser', JSON.stringify({ username }));
+      window.location.href = 'reward.html';
+    });
+  </script>
+</body>
+</html>
