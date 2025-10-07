@@ -1,0 +1,12 @@
+{
+  "name": "cerizon-launch",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "body-parser": "^1.20.3",
+    "rcon-client": "^5.1.0",
+    "fs-extra": "^11.2.0"
+  }
+}
