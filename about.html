@@ -1,103 +1,155 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Kami | Celestial Horizon (Cerizon)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #222;
-            color: white;
-        }
-        header {
-            text-align: center;
-            padding: 50px;
-        }
-        header h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        .staff {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px;
-        }
-        .staff-member {
-            background-color: rgba(0, 0, 0, 0.5);
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 200px;
-            transition: transform 0.3s ease;
-        }
-        .staff-member img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-        }
-        .staff-member:hover {
-            transform: scale(1.05);
-        }
-        .staff-member h3 {
-            margin-top: 10px;
-            font-size: 1.2em;
-        }
-        .staff-member p {
-            font-size: 1em;
-            color: #aaa;
-        }
-        nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5em;
-            padding: 10px 20px;
-            border: 2px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tentang Kami | Cerizon</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .staff {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 20px;
+    }
+
+    .staff-member {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      margin: 15px;
+      border-radius: 12px;
+      text-align: center;
+      width: 220px;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .staff-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .staff-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00ffe0;
+    }
+
+    .staff-member h3 {
+      margin-top: 10px;
+    }
+
+    .staff-member p {
+      color: #aaa;
+      font-size: 0.95em;
+    }
+
+    nav {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      border: 2px solid white;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      color: transparent;
+      background-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(45deg, #00ffe0, #00b3ff, #00ffe0);
+      animation: animateText 4s linear infinite;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      transition: transform 0.4s ease;
+      width: 100px;
+      height: 100px;
+      z-index: 0;
+      pointer-events: none;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    nav a:active::after {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0s;
+    }
+
+    @keyframes animateText {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Tentang Kami</h1>
-        <p>Kenali para admin dan staff yang membuat komunitas Cerizon berkembang!</p>
-    </header>
-    
-    <div class="staff">
-        <div class="staff-member">
-            <img src="admin1.jpg" alt="Foto Admin 1"> <!-- Ganti dengan foto admin 1 -->
-            <h3>Rudi "MinecraftKing"</h3>
-            <p>Admin</p>
-            <p>Jobdesk: Mengelola server, memastikan kelancaran permainan.</p>
-        </div>
-        <div class="staff-member">
-            <img src="admin2.jpg" alt="Foto Admin 2"> <!-- Ganti dengan foto admin 2 -->
-            <h3>Linda "CreeperQueen"</h3>
-            <p>Admin</p>
-            <p>Jobdesk: Menangani masalah teknis dan pengaturan event.</p>
-        </div>
-        <div class="staff-member">
-            <img src="admin3.jpg" alt="Foto Admin 3"> <!-- Ganti dengan foto admin 3 -->
-            <h3>Joko "BuilderMaster"</h3>
-            <p>Admin</p>
-            <p>Jobdesk: Desain bangunan, pembuatan dunia kreatif.</p>
-        </div>
-    </div>
+  <header>
+    <h1>Tentang Kami</h1>
+    <p>Kenali para staff Cerizon!</p>
+  </header>
 
-    <nav>
-        <a href="index.html">Beranda</a>
-    </nav>
+  <div class="staff">
+    <div class="staff-member">
+      <img src="admin1.jpg" alt="Foto Admin 1" />
+      <h3>Rudi "MinecraftKing"</h3>
+      <p>Admin</p>
+      <p>Jobdesk: Mengelola server, menjaga kelancaran gameplay.</p>
+    </div>
+    <div class="staff-member">
+      <img src="admin2.jpg" alt="Foto Admin 2" />
+      <h3>Linda "CreeperQueen"</h3>
+      <p>Event Master</p>
+      <p>Jobdesk: Membuat event dan konten komunitas.</p>
+    </div>
+    <div class="staff-member">
+      <img src="admin3.jpg" alt="Foto Admin 3" />
+      <h3>Joko "BuilderMaster"</h3>
+      <p>Map Designer</p>
+      <p>Jobdesk: Merancang dunia dan bangunan.</p>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html">Kembali ke Beranda</a>
+  </nav>
 </body>
 </html>
