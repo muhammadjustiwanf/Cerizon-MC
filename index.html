@@ -18,8 +18,37 @@
       padding: 80px 20px 30px;
     }
 
+    .logo-icon {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 0 8px #00e6ff);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px) {
+      .logo-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 15px;
+      }
+
+      header h1 {
+        font-size: 2.3em;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
     header h1 {
-      font-size: 3.5em;
+      font-size: 3em;
       text-shadow: 2px 2px 6px #000;
     }
 
@@ -85,7 +114,8 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to Celestial Horizon (Cerizon)</h1>
+    <img src="https://cdn.discordapp.com/attachments/1382310862068645928/1414586517011038311/image.png?ex=68e6575b&is=68e505db&hm=70e3a458bc3932593b2ea796de1d48a6ca304b69aba8535c17be3ca2fd436b60&" alt="Cerizon Logo" class="logo-icon">
+    <h1>Selamat datang di Cerizon Season 2</h1>
     <p>Komunitas Minecraft yang penuh petualangan dan kreativitas!</p>
   </header>
   <nav>
