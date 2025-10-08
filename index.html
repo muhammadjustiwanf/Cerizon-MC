@@ -203,12 +203,21 @@
   <script>
     const audio = document.getElementById("bg-music");
 
-    // Coba langsung play
-    audio.play().catch(() => {
-      // Jika autoplay diblokir, aktifkan setelah interaksi pertama
-      document.addEventListener("click", () => {
-        audio.play();
-      }, { once: true });
+    // Coba mulai dulu (dalam keadaan muted)
+    audio.play().then(() => {
+      // Setelah berhasil play, fade-in volume pelan-pelan
+      let vol = 0.0;
+      const fade = setInterval(() => {
+        if (vol < 1.0) {
+          vol += 0.02;
+          audio.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 200);
+      audio.muted = false;
+    }).catch(err => {
+      console.log("Autoplay diblokir oleh browser:", err);
     });
   </script>
 </body>
