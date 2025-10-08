@@ -195,43 +195,20 @@
     <a href="about.html">Tentang Kami</a>
   </nav>
 
-  <audio id="bg-music" autoplay loop muted>
-    <source src="assets/bgm.mp3" type="audio/mp3">
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2b9568c67e.mp3" type="audio/mp3">
     Browser Anda tidak mendukung elemen audio.
   </audio>
-  
-  <button id="music-toggle" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 50px;
-    background: rgba(0,255,255,0.2);
-    color: white;
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-    box-shadow: 0 0 8px #00ffff;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-  ">🔊 Musik</button>
 
   <script>
     const audio = document.getElementById("bg-music");
-    const btn = document.getElementById("music-toggle");
-    let playing = false;
 
-    btn.addEventListener("click", () => {
-      if (!playing) {
-        audio.muted = false;
+    // Coba langsung play
+    audio.play().catch(() => {
+      // Jika autoplay diblokir, aktifkan setelah interaksi pertama
+      document.addEventListener("click", () => {
         audio.play();
-        playing = true;
-        btn.textContent = "🔇 Matikan Musik";
-      } else {
-        audio.pause();
-        playing = false;
-        btn.textContent = "🔊 Musik";
-      }
+      }, { once: true });
     });
   </script>
 </body>
