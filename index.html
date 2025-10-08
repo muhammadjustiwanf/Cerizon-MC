@@ -215,5 +215,24 @@
     font-size: 1.1em;
     transition: all 0.3s ease;
   ">🔊 Musik</button>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+    const btn = document.getElementById("music-toggle");
+    let playing = false;
+
+    btn.addEventListener("click", () => {
+      if (!playing) {
+        audio.muted = false;
+        audio.play();
+        playing = true;
+        btn.textContent = "🔇 Matikan Musik";
+      } else {
+        audio.pause();
+        playing = false;
+        btn.textContent = "🔊 Musik";
+      }
+    });
+  </script>
 </body>
 </html>
